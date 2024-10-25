@@ -1,0 +1,12 @@
+footer {
+  color: var(--color3);
+  background-color: #1d1c1b;
+  padding: 0.5em;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6c6060;
+}

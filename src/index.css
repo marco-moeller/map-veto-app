@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+label,
+button,
+select,
+a,
+summary,
+[type="radio"],
+[type="submit"],
+[type="checkbox"] {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+menu:not(article menu),
+ol:not(article ol),
+ul:not(article ul) {
+  list-style: none;
+}
+
+/* -- TYPO -- */
+
+/* -- BTN/LINK -- */
+
+/* -- LAYOUT -- */
+body,
+#root {
+  line-height: 1.5;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Oswald", sans-serif;
+}
+
+main {
+  flex-grow: 1;
+}
+
+input {
+  font-family: "Oswald", sans-serif;
+}
+
+/* -- UTILITY -- */
+
+/* -- MEDIA -- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
