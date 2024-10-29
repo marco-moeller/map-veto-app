@@ -287,6 +287,9 @@ label {
   .lobby {
     padding-top: 6em;
   }
+  .lobby * {
+    font-size: 1rem;
+  }
 }
 
 @media (width<820px) {
