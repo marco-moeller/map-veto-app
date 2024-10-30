@@ -7,6 +7,7 @@ import { nanoid } from "nanoid";
 import ChosenMapsBo3 from "../components/ChosenMapsBo3";
 import ChosenMapsBo1 from "../components/ChosenMapsBo1";
 import ChosenMapsBoX from "../components/ChosenMapsBoX";
+import { FaRegCopy } from "react-icons/fa";
 
 function Lobby() {
   const { id } = useParams();
@@ -167,27 +168,20 @@ function Lobby() {
         HOME
       </button>
       <button onClick={copyToClipboard} className="lobby-id-copy">
-        COPY THIS LOBBY LINK AND SEND IT TO YOUR OPPONENT
+        COPY THIS LOBBY LINK AND SEND IT TO YOUR OPPONENT <FaRegCopy />
       </button>
-      <h1>
-        This match will be a {lobby.matchType} following the "{lobby.vetoSystem}
-        " veto pattern. Do your vetoes and map picks below.
-      </h1>
       {!vetoesAreDone() && (
-        <>
-          <h2>
-            Hello! You are Player {selectedPlayer}, so
-            {selectedPlayer === "A" ? " you go first." : " you go second."}
-          </h2>
-
-          <h2>
-            {lobby.activePlayer === selectedPlayer
-              ? `Your turn to ${vetoOrPick()}`
-              : `Wait for your opponents ${vetoOrPick()}`}
-          </h2>
-        </>
+        <h1 className="orange">
+          {lobby.activePlayer === selectedPlayer
+            ? `Your turn to ${vetoOrPick()}`
+            : `Wait for your opponents ${vetoOrPick()}`}
+        </h1>
       )}
-      {vetoesAreDone() && <h2>Vetoes are done - GL & HF</h2>}
+      <h3>
+        (This match will be a {lobby.matchType} following the "
+        {lobby.vetoSystem}..." veto pattern.)
+      </h3>
+      {vetoesAreDone() && <h2 className="orange">Vetoes are done - GL & HF</h2>}
       <div className="maps">
         {lobby.maps?.map((map) => (
           <div
@@ -220,7 +214,7 @@ function Lobby() {
           </div>
         ))}
       </div>
-      <div className="divider" />
+      {lobby.startingMap !== "" && <div className="divider" />}
       {lobby.matchType === "Bo1" && lobby.startingMap !== "" && (
         <ChosenMapsBo1 startingMap={lobby.startingMap} />
       )}
