@@ -38,7 +38,7 @@ function Home() {
           Player B
         </button>
       </div>
-      <button className="btn" onClick={handleCreateLobby}>
+      <button className="create-lobby-btn" onClick={handleCreateLobby}>
         Create A Veto Lobby
       </button>
       {isShowing && (

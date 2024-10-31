@@ -17,6 +17,15 @@
   font-weight: bold;
 }
 
+.create-lobby-btn {
+  background-color: var(--color2);
+  color: var(--color3);
+  padding: 1em 3em;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .btn:hover {
   background-color: #f95b06;
 }

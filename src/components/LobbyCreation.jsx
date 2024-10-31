@@ -291,7 +291,7 @@ function LobbyCreation({ toggle, selectedPlayer }) {
         </button>
       </div>
       <button
-        className="btn"
+        className="create-lobby-btn"
         onClick={handleCreateLobby}
         disabled={!hasChosenEnoughMaps() || !hasChosenUnevenNumberOfMaps()}
       >
