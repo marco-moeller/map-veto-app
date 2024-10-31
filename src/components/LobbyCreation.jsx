@@ -74,8 +74,12 @@ function LobbyCreation({ toggle, selectedPlayer }) {
   };
 
   const toggleMapFromMapPool = (map) => {
-    if (isStartingMap(map)) {
-      return;
+    if (isStartingMap(map) && lobbyOptions.maps.includes(map)) {
+      setLobbyOptions((prevState) => ({
+        ...prevState,
+        maps: prevState.maps.filter((item) => item !== map),
+        startingMap: ""
+      }));
     }
 
     if (lobbyOptions.maps.includes(map))
@@ -91,7 +95,11 @@ function LobbyCreation({ toggle, selectedPlayer }) {
   };
 
   const handleMapPoolChange = (mapPool) => {
-    setLobbyOptions((prevState) => ({ ...prevState, maps: [...mapPool] }));
+    setLobbyOptions((prevState) => ({
+      ...prevState,
+      maps: [...mapPool],
+      startingMap: ""
+    }));
     setDefaultMaps(mapPool);
   };
 
@@ -103,6 +111,10 @@ function LobbyCreation({ toggle, selectedPlayer }) {
 
   const hasChosenEnoughMaps = () => {
     return lobbyOptions.matchType[2] <= lobbyOptions.maps.length;
+  };
+
+  const hasChosenUnevenNumberOfMaps = () => {
+    return lobbyOptions.maps.length % 2 !== 0;
   };
 
   const isStartingMap = (map) => {
@@ -158,7 +170,11 @@ function LobbyCreation({ toggle, selectedPlayer }) {
         <span className={hasChosenEnoughMaps() ? "" : "orange"}>
           {lobbyOptions.matchType[2]}
         </span>{" "}
-        Maps (
+        Maps. The number of maps must be{" "}
+        <span className={hasChosenUnevenNumberOfMaps() ? "" : "orange"}>
+          uneven
+        </span>{" "}
+        (
         <span className={hasChosenEnoughMaps() ? "" : "orange"}>
           {lobbyOptions.maps.length} Maps Chosen
         </span>
@@ -171,9 +187,7 @@ function LobbyCreation({ toggle, selectedPlayer }) {
               src={`../${toCamelCase(map)}.jpg`}
               alt="map"
               className={`map-img-s ${
-                lobbyOptions.maps.includes(map) && !isStartingMap(map)
-                  ? " "
-                  : " grey"
+                lobbyOptions.maps.includes(map) ? " " : " grey"
               }`}
               onClick={() => toggleMapFromMapPool(map)}
             />
@@ -211,7 +225,7 @@ function LobbyCreation({ toggle, selectedPlayer }) {
                 className="delete-btn"
               />
             )}
-            {defaultMaps.map((map) => (
+            {lobbyOptions.maps.map((map) => (
               <div className="map">
                 <img
                   src={`../${toCamelCase(map)}.jpg`}
@@ -279,7 +293,7 @@ function LobbyCreation({ toggle, selectedPlayer }) {
       <button
         className="btn"
         onClick={handleCreateLobby}
-        disabled={!hasChosenEnoughMaps()}
+        disabled={!hasChosenEnoughMaps() || !hasChosenUnevenNumberOfMaps()}
       >
         Create Lobby
       </button>
