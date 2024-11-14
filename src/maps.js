@@ -10,16 +10,6 @@ export const GNLMaps = [
   "Twisted Meadows"
 ];
 
-export const CreepcampMaps = [
-  "Northern Isles",
-  "Autumn Leaves",
-  "Tidehunters",
-  "Shallow Grave",
-  "Springtime",
-  "Hammerfall",
-  "War Hail"
-];
-
 export const MasterLeagueMaps = [
   "Autumn Leaves",
   "Hammerfall",
@@ -70,5 +60,15 @@ export const AllCompetitiveMaps = [
   "Tidehunters",
   "Turtle Rock",
   "Twisted Meadows",
+  "War Hail"
+];
+
+export const CreepcampMaps = [
+  "Autumn Leaves",
+  "Hammerfall",
+  "Northern Isles",
+  "Shallow Grave",
+  "Springtime",
+  "Tidehunters",
   "War Hail"
 ];

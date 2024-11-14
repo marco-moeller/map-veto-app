@@ -6,7 +6,8 @@ import {
   DACHInfernoMaps,
   W3CMaps,
   AllCompetitiveMaps,
-  MasterLeagueMaps
+  MasterLeagueMaps,
+  CreepcampMaps
 } from "../maps";
 import { toCamelCase } from "../nameConversion";
 import { CiSquarePlus } from "react-icons/ci";
@@ -157,6 +158,14 @@ function LobbyCreation({ toggle, selectedPlayer }) {
         >
           W3Champions
         </button>
+        <button
+          type="button"
+          className={getMapPoolBtnBg(CreepcampMaps) + " btn"}
+          onClick={() => handleMapPoolChange(CreepcampMaps)}
+        >
+          Creepcamp
+        </button>
+
         <button
           type="button"
           className={getMapPoolBtnBg(AllCompetitiveMaps) + " btn"}
